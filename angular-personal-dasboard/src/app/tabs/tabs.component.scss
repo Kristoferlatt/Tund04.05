@@ -8,17 +8,40 @@
     margin: 12px;
     margin-top: 50px;
 }
+
+.tab{
+    position: relative;
+}
+
 .tab-title{
     display: flex;
     padding: 18px;
-    background: linear-gradient(45deg, #f8b5a5, #e2d2fd);
-
-    border-radius: 10px;
+    
     cursor:Pointer;
 
     i{
         color: #222;
     }
     
+
+}
+
+.tab-title::before{
+    content: "";
+    
+    position: absolute;
+    top: 0px;
+    left: 0px;
+
+    z-index: -1;
+
+    height: 100%;
+    width: 100%;
+
+    background: linear-gradient(45deg, #f8b5a5, #e2d2fd);
+
+    border-radius: 10px;
+    
+
 
 }
