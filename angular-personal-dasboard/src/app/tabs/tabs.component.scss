@@ -11,8 +11,9 @@
 .tab-title{
     display: flex;
     padding: 18px;
-    background-color: rgba(black, 0.1);
+    background: linear-gradient(45deg, #f8b5a5, #e2d2fd);
 
+    border-radius: 10px;
     cursor:Pointer;
 
     i{
