@@ -25,11 +25,15 @@
     i{
         color: #222;
     }
-    transition: all 0.2s;    
+    transition: all 0.2s;  
 
 }
 .tab.selected .tab-title{
-transform: translateY(-28px);
+transform: translateY(-50%);
+
+
+transition-duration: 0.4s;
+transition-timing-function: cubic-bezier(0, 0, 0, 2);
 }
 
 .tab-title::before{
@@ -50,7 +54,7 @@ transform: translateY(-28px);
 
     opacity: 0.9;
 
-    transition: all 0.2s cubic-bezier(0, 0, 0, 2);
+    transition: all 0.2s ease-out;
 }
 .bookmarks-tab .tab-title::before{
     background: linear-gradient(45deg, #f8b5a5, #e2d2fd);
@@ -71,4 +75,31 @@ transform: translateY(-28px);
     opacity: 1;
     transform: scale(1.1);
     border-radius: 50%;
+    box-shadow: 0px 7px 17px rgba(black, 0.12);
+    transition-delay: 0.2s;
 }
+
+.tab::after{
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+
+    height: 2px;
+    width: 50%;
+
+    margin: auto;
+
+    background-color:rgba(white, 0.85);
+    border-radius: 2px;
+    opacity: 0;
+    transition: 0.2s;
+    transform: scaleX(0);
+}
+.tab.selected::after{
+    opacity: 1;
+    transform: scaleX(1);
+    transition-delay: 0.2s;
+}
+.tab.selected{outline:none;}
