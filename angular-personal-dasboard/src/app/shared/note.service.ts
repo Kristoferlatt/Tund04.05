@@ -40,7 +40,7 @@ export class NoteService implements OnDestroy {
 
   updateNote(id: string, updatedFields: Partial<Note>) {
     const note = this.getNote(id)
-    Object.assign(Note, updatedFields)
+    Object.assign(note, updatedFields)
 
     this.saveState()
   }
