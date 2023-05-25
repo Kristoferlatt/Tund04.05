@@ -9,7 +9,7 @@ import { NoteService } from '../shared/note.service';
 })
 export class NotesComponent implements OnInit {
 
-  notes: Note[]
+  notes!: Note[]
   
   constructor(private noteService: NoteService) { }
 

@@ -14,11 +14,10 @@ export class NoteService implements OnDestroy {
   constructor() {
     this.loadState()
 
-    this.storageListenSub = fromEvent(window, 'storage')
-      .subscribe((event: StorageEvent) => {
-        if (event.key === 'notes') this.loadState()
-      })
-  }
+    this.storageListenSub = fromEvent<StorageEvent>(window, 'notes').subscribe((event: StorageEvent) => {
+      if(event.key === 'notes') this.loadState()
+    });
+   }
 
   ngOnDestroy() {
     if (this.storageListenSub) this.storageListenSub.unsubscribe()
@@ -39,10 +38,11 @@ export class NoteService implements OnDestroy {
   }
 
   updateNote(id: string, updatedFields: Partial<Note>) {
-    const note = this.getNote(id)
-    Object.assign(note, updatedFields)
-
-    this.saveState()
+    const note = this.getNote(id);
+    if (note) {
+      Object.assign(note, updatedFields);
+      this.saveState()
+    }
   }
 
   deleteNote(id: string) {
@@ -60,7 +60,8 @@ export class NoteService implements OnDestroy {
 
   loadState() {
     try {
-      const notesInStorage = JSON.parse(localStorage.getItem('notes'))
+      const notesInStorage: Note[] = JSON.parse(localStorage.getItem('notes') || '[]');
+
       // if (!notesInStorage) return
 
       this.notes.length = 0 // clear the notes array (while keeping the reference)
