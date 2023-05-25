@@ -10,6 +10,7 @@ import { NoteService } from '../shared/note.service';
   styleUrls: ['./add-note.component.scss']
 })
 export class AddNoteComponent implements OnInit {
+  showValidationErrors!: boolean
   constructor(private noteService: NoteService, private router: Router){}
   ngOnInit(): void{
 
@@ -17,8 +18,9 @@ export class AddNoteComponent implements OnInit {
 
   onFormSubmit(form: NgForm){
     console.log(form)
+    
 
-    if (form.invalid) return alert("From is invalid!")
+    if(form.invalid) { this.showValidationErrors = true; return }
 
     const note = new Note(form.value.title, form.value.content)
 

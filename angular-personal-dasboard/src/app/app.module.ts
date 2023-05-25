@@ -13,6 +13,7 @@ import { NotesComponent } from './notes/notes.component';
 import { BookmarkTitleComponent } from './bookmark-title/bookmark-title.component';
 import { AddNoteComponent } from './add-note/add-note.component';
 import { NoteCardComponent } from './note-card/note-card.component';
+import { EditNoteComponent } from './edit-note/edit-note.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { NoteCardComponent } from './note-card/note-card.component';
     NotesComponent,
     BookmarkTitleComponent,
     AddNoteComponent,
-    NoteCardComponent
+    NoteCardComponent,
+    EditNoteComponent
   ],
   imports: [
     BrowserModule,
