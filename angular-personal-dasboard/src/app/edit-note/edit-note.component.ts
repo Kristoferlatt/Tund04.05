@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Note } from '../shared/note.model';
 import { NoteService } from '../shared/note.service';
 
 @Component({
@@ -9,16 +10,16 @@ import { NoteService } from '../shared/note.service';
 })
 export class EditNoteComponent implements OnInit {
 
+  note!:Note| undefined
+
   constructor(private route: ActivatedRoute, private noteService: NoteService) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       const idParam = paramMap.get('id')
-      console.log(idParam)
-      const note = this.noteService.getNote(idParam!)
-      console.log("This is the note:")
-      console.log(note)
-
+      if (idParam !== null) {
+        this.note = this.noteService.getNote(idParam);
+      }
     })
   }
 
