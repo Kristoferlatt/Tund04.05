@@ -27,7 +27,7 @@ import { NotificationService } from '../shared/notification.service';
 })
 export class NotificationComponent implements OnInit {
 
-  notification!: NotificationData[]
+  notification!: NotificationData []
 
   timeout: any
 
@@ -40,7 +40,7 @@ export class NotificationComponent implements OnInit {
       clearTimeout(this.timeout)
 
       this.timeout = setTimeout(() => {
-        this.notification = null
+        this.notification = null!
       }, notification.duration)
     })
   }

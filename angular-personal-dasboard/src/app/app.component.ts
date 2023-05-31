@@ -183,9 +183,9 @@ export class AppComponent implements OnInit {
     'https://images.unsplash.com/photo-1434907652076-85f8401482c3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1920'
   ]
 
-  loadingBGImage: boolean
+  loadingBGImage!: boolean
 
-  dateTime: Observable<Date>
+  dateTime!: Observable<Date>
 
   ngOnInit() {
     this.dateTime = timer(0, 1000).pipe(

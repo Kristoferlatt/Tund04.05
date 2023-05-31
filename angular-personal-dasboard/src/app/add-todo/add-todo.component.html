@@ -5,10 +5,12 @@
         <div class="form-field">
             <input class="textbox" ngModel #textField="ngModel" name="text" type="text" placeholder="Enter todo text..." required minlength="3">
             <ng-container *ngIf="showValidationErrors && textField.invalid">
-                <p *ngIf="textField.errors.required">Please enter some text for this todo</p>
-                <p *ngIf="textField.errors.minlength">The todo text must be at least 3 characters</p>
+                <p *ngIf="textField.errors?.['required']">Sisesta märkme pealkiri!</p>
+                <p *ngIf="textField.errors?.['minlength']">Pealkiri peab sisaldama vähemalt 3 tähte!</p>
             </ng-container>
+        
         </div>
+
 
         <div class="btns-container">
             <a routerLink="../" class="btn">Cancel</a>

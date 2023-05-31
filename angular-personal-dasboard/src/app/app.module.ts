@@ -1,8 +1,8 @@
-import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { NgModule } from '@angular/core';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,7 +10,7 @@ import { TabsComponent } from './tabs/tabs.component';
 import { BookmarksComponent } from './bookmarks/bookmarks.component';
 import { TodosComponent } from './todos/todos.component';
 import { NotesComponent } from './notes/notes.component';
-import { BookmarkTitleComponent } from './bookmark-title/bookmark-title.component';
+import { BookmarkTileComponent } from './bookmark-tile/bookmark-tile.component';
 import { AddNoteComponent } from './add-note/add-note.component';
 import { NoteCardComponent } from './note-card/note-card.component';
 import { EditNoteComponent } from './edit-note/edit-note.component';
@@ -29,7 +29,7 @@ import { NotificationComponent } from './notification/notification.component';
     BookmarksComponent,
     TodosComponent,
     NotesComponent,
-    BookmarkTitleComponent,
+    BookmarkTileComponent,
     AddNoteComponent,
     NoteCardComponent,
     EditNoteComponent,

@@ -18,7 +18,7 @@ export class EditTodoComponent implements OnInit {
     private route: ActivatedRoute,
     private todoService: TodoService,
     private router: Router,
-    private notificationService: NotificationService) { }
+    private notificationService: NotificationService,) { }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {

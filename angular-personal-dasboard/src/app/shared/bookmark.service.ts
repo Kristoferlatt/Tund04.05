@@ -14,7 +14,7 @@ export class BookmarkService implements OnDestroy {
   constructor() {
     this.loadState()
 
-    this.storageListenSub = fromEvent(window, 'storage')
+    this.storageListenSub = fromEvent<StorageEvent>(window, 'storage')
       .subscribe((event: StorageEvent) => {
         if (event.key === 'bookmarks') this.loadState()
       })
@@ -40,9 +40,11 @@ export class BookmarkService implements OnDestroy {
 
   updateBookmark(id: string, updatedFields: Partial<Bookmark>) {
     const bookmark = this.getBookmark(id)
-    Object.assign(bookmark, updatedFields)
+    if (bookmark) {
+      Object.assign(bookmark, updatedFields );
+      this.saveState()
+    }
 
-    this.saveState()
   }
 
   deleteBookmark(id: string) {
@@ -58,7 +60,7 @@ export class BookmarkService implements OnDestroy {
 
   loadState() {
     try {
-      const bookmarksInStorage = JSON.parse(localStorage.getItem('bookmarks'), (key, value) => {
+      const bookmarksInStorage = JSON.parse(localStorage.getItem('bookmarks') || '[]', (key, value) => {
         if (key == 'url') return new URL(value)
         return value
       })

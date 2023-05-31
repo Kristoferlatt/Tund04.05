@@ -12,7 +12,7 @@ import { NotificationService } from '../shared/notification.service';
 })
 export class EditBookmarkComponent implements OnInit {
 
-  bookmark!: Bookmark
+  bookmark!: Bookmark| undefined
   
   constructor(
     private bookmarkService: BookmarkService,
@@ -23,14 +23,16 @@ export class EditBookmarkComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       const bookmarkId = paramMap.get('id')
-      this.bookmark = this.bookmarkService.getBookmark(bookmarkId)
+      if (bookmarkId !== null) {
+        this.bookmark = this.bookmarkService.getBookmark(bookmarkId);
+      }
     })
   }
 
   onFormSubmit(form: NgForm) {
     const { name, url } = form.value
 
-    this.bookmarkService.updateBookmark(this.bookmark.id, {
+    this.bookmarkService.updateBookmark(this.bookmark!.id, {
       name,
       url: new URL(url)
     })
@@ -39,7 +41,7 @@ export class EditBookmarkComponent implements OnInit {
   }
 
   delete() {
-    this.bookmarkService.deleteBookmark(this.bookmark.id)
+    this.bookmarkService.deleteBookmark(this.bookmark!.id)
     this.router.navigate(['../'], { relativeTo: this.route })
 
     this.notificationService.show('Deleted Bookmark')
