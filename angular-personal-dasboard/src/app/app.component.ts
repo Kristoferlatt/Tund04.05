@@ -213,14 +213,12 @@ export class AppComponent implements OnInit {
     const alreadyGot = this.backgrounds.includes(result.url)
     if (alreadyGot) {
       // this is the same image as we currently have, so re-run the function
-      return this.changeBGImage()
+      this.changeBGImage()
     }
 
     this.backgrounds.push(result.url)
   }
-
   onBGImageLoad(imgEvent: Event) {
-    // BG image has loaded, now remove the old BG image from the backgrounds array
     const imgElement = imgEvent.target as HTMLImageElement
     const src = imgElement.src
     this.backgrounds = this.backgrounds.filter(b => b === src)
