@@ -15,7 +15,7 @@ export class TodoService {
   constructor() {
     this.loadState()
 
-    this.storageListenSub = fromEvent(window, 'storage')
+    this.storageListenSub = fromEvent<StorageEvent>(window, 'storage')
       .subscribe((event: StorageEvent) => {
         if (event.key === 'todos') this.loadState()
       })
@@ -41,9 +41,10 @@ export class TodoService {
 
   updateTodo(id: string, updatedTodoFields: Partial<Todo>) {
     const todo = this.getTodo(id)
-    Object.assign(todo, updatedTodoFields)
-
-    this.saveState()
+    if (todo) {
+      Object.assign(todo, updatedTodoFields);
+      this.saveState()
+    }
   }
 
   deleteTodo(id: string) {
@@ -61,7 +62,7 @@ export class TodoService {
 
   loadState() {
     try {
-      const todosInStorage = JSON.parse(localStorage.getItem('todos'))
+      const todosInStorage = JSON.parse(localStorage.getItem('todos')|| '[]')
 
       if (!todosInStorage) return
 

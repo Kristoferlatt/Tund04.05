@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoService } from '../shared/todo.service';
-import { Route } from '@angular/router';
+import { Route, Router } from '@angular/router';
 import { Todo } from '../shared/todo.model';
 import { animate, style, transition, trigger } from '@angular/animations';
 
@@ -24,7 +24,7 @@ export class TodosComponent implements OnInit {
 
   todos!: Todo[]
 
-  constructor(private todoService: TodoService, private router: Route) { }
+  constructor(private todoService: TodoService, private router: Router) { }
 
   ngOnInit(): void {
     this.todos = this.todoService.getTodos()
